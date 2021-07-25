@@ -1,6 +1,7 @@
-require('dapui').setup()
+require("dapui").setup()
 
-vim.api.nvim_exec([[
+vim.api.nvim_exec(
+	[[
     nnoremap <silent> <F5> :lua require'dap'.continue()<CR>
     nnoremap <silent> <F10> :lua require'dap'.step_over()<CR>
     nnoremap <silent> <F11> :lua require'dap'.step_into()<CR>
@@ -10,12 +11,29 @@ vim.api.nvim_exec([[
     nnoremap <silent> <leader>lp :lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>
     nnoremap <silent> <leader>dr :lua require'dap'.repl.open()<CR>
     nnoremap <silent> <leader>dl :lua require'dap'.run_last()<CR>
-]], false)
+]],
+	false
+)
 
 -- In a file lua/my_debug.lua
-vim.cmd( [[
+vim.cmd([[
     command! -complete=file -nargs=* DebugC lua require "settings.plugins.nvim-dap-setup.c_debugger".start_c_debugger({<f-args>}, "gdb")
 ]])
-vim.cmd [[
+vim.cmd([[
     command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
-]]
+]]))
+vim.cmd([[
+    command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+]]))
+vim.cmd([[
+    command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+]]))
+vim.cmd([[
+    command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+]]))
+vim.cmd([[
+    command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+]]))
+vim.cmd([[
+    command! -complete=file -nargs=* DebugRust lua require "c_debugger".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+]])

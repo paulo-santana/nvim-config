@@ -17,7 +17,7 @@ null_ls.config({
 lspconfig["null-ls"].setup({
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
-			vim.cmd("autocmd BufWritePost *.lua lua vim.lsp.buf.formatting()")
+			vim.cmd("autocmd BufWritePre *.lua lua vim.lsp.buf.formatting()")
 		end
-	end,,
+	end,
 })

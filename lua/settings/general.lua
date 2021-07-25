@@ -2,13 +2,13 @@ local setopt = vim.opt
 
 local options = {
 	ruler = true,
-	mouse = 'a',
+	mouse = "a",
 	hidden = true,
-	encoding = 'utf-8',
+	encoding = "utf-8",
 	splitbelow = true,
 	splitright = true,
 	--t_Co = '256',
-	background = 'dark',
+	background = "dark",
 	smarttab = true,
 	laststatus = 2,
 	showtabline = 2,
@@ -17,17 +17,17 @@ local options = {
 	showmode = false,
 	cmdheight = 2,
 	updatetime = 300,
-	inccommand = 'nosplit',
+	inccommand = "nosplit",
 	termguicolors = true,
 
 	number = true,
 	relativenumber = true,
-	signcolumn = 'yes',
+	signcolumn = "yes",
 	cursorline = true,
-	colorcolumn = '80,120',
+	colorcolumn = "80,120",
 	wrap = false,
 
-	fileencoding = 'utf-8',
+	fileencoding = "utf-8",
 	tabstop = 4,
 	shiftwidth = 4,
 	expandtab = false,
@@ -42,16 +42,12 @@ end
 
 set_options(options)
 
---vim.api.nvim_exec([[
---fileencoding=utf-8
---tabstop=4
---shiftwidth=4
---noexpandtab
---smartindent
---]], true);
---vim.cmd('highlight Search ctermfg=180 ctermbg=59 guifg=#e5c07b guibg=#5c6370')
---vim.bo.fileencoding = 'utf-8'
---vim.bo.tabstop = 4
---vim.bo.shiftwidth = 4
---vim.bo.expandtab = false
---vim.bo.smartindent = true
+vim.api.nvim_exec(
+	[[
+		augroup project
+		autocmd!
+		autocmd BufRead,BufNewFile *.h set filetype=c
+		augroup END
+	]],
+	false
+)

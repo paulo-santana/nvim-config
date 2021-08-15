@@ -8,7 +8,7 @@ dap.adapters.lldb = {
 
 dap.configurations.c = {
     {
-        name = 'Launch',
+        name = 'Default',
         type = 'lldb',
         request = 'launch',
         program = function()
@@ -25,3 +25,4 @@ dap.configurations.c = {
 }
 
 require('dap.ext.vscode').load_launchjs()
+vim.g.dap_virtual_text = true

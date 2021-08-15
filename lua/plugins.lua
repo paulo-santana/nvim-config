@@ -1,114 +1,124 @@
 local execute = vim.api.nvim_command
 local fn = vim.fn
 
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
 if fn.empty(fn.glob(install_path)) > 0 then
-	execute("!git clone https://github.com/wbthomason/packer.nvim " .. install_path)
-	execute("packadd packer.nvim")
+    execute(
+        '!git clone https://github.com/wbthomason/packer.nvim ' .. install_path
+    )
+    execute('packadd packer.nvim')
 end
 
-return require("packer").startup(function(use)
-	-- make the plugin manage itself
-	use({ "wbthomason/packer.nvim" })
+return require('packer').startup(function(use)
+    -- make the plugin manage itself
+    use({ 'wbthomason/packer.nvim' })
 
-	use({
-		"nvim-treesitter/nvim-treesitter",
-		branch = "0.5-compat",
-		run = ":TSUpdate",
-	})
+    use({
+        'nvim-treesitter/nvim-treesitter',
+        branch = '0.5-compat',
+        run = ':TSUpdate',
+    })
 
-	use({ "neovim/nvim-lspconfig" })
+    use({ 'nvim-treesitter/playground' })
 
-	use({ "glepnir/lspsaga.nvim" })
+    use({ 'neovim/nvim-lspconfig' })
 
-	use({ "ray-x/lsp_signature.nvim" })
+    use({ 'glepnir/lspsaga.nvim' })
 
-	--	-- eclipse jdt client
-	--	use { 'mfussenegger/nvim-jdtls' }
-	--
-	-- fuzzy finder
-	use({
-		"nvim-telescope/telescope.nvim",
-		requires = { { "nvim-lua/popup.nvim" }, { "nvim-lua/plenary.nvim" } },
-	})
+    use({ 'ray-x/lsp_signature.nvim' })
 
-	--	-- colorscheme
-	--	-- use { 'joshdick/onedark.vim' }
-	--use { 'monsonjeremy/onedark.nvim' }
-	use({ "paulo-santana/onedarker.nvim" })
-	--	-- use { 'folke/tokyonight.nvim' }
-	-- use { 'siduck76/nvim-base16.lua' }
+    use({
+        'nvim-telescope/telescope.nvim',
+        requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
+    })
 
-	-- nvim-lspconfig recommended completion
-	use({ "hrsh7th/nvim-compe" })
+    use({ 'paulo-santana/onedarker.nvim' })
 
-	--	-- status line
-	----	use {
-	----		'glepnir/galaxyline.nvim',
-	----		branch = 'main',
-	----		-- try to load config here
-	----		--config = function() require'settings.plugins.galaxyline' end,
-	----		-- some optional icons
-	----		requires = {'kyazdani42/nvim-web-devicons', opt = true}
-	----	}
+    -- nvim-lspconfig recommended completion
+    use({ 'hrsh7th/nvim-compe' })
 
-	use({ "akinsho/nvim-bufferline.lua", requires = "kyazdani42/nvim-web-devicons" })
+    --	-- status line
+    ----	use {
+    ----		'glepnir/galaxyline.nvim',
+    ----		branch = 'main',
+    ----		-- try to load config here
+    ----		--config = function() require'settings.plugins.galaxyline' end,
+    ----		-- some optional icons
+    ----		requires = {'kyazdani42/nvim-web-devicons', opt = true}
+    ----	}
 
-	use({ "vinicius507/norme.nvim", requires = { "jose-elias-alvarez/null-ls.nvim" } })
+    use({
+        'akinsho/nvim-bufferline.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+    })
 
-	use({ "tjdevries/nlua.nvim" })
+    use({
+        'vinicius507/norme.nvim',
+        requires = { 'jose-elias-alvarez/null-ls.nvim' },
+    })
 
-	use({ "eduardomosko/header42.nvim" })
-	--
-	--use {'Th3Whit3Wolf/onebuddy', requires = 'tjdevries/colorbuddy.vim'}
-	use({ "norcalli/nvim-colorizer.lua" })
-	--
-	use({ "lunarWatcher/auto-pairs" })
+    use({ 'tjdevries/nlua.nvim' })
 
-	use({ "folke/lsp-colors.nvim" })
+    use({ 'eduardomosko/header42.nvim' })
+    --
+    --use {'Th3Whit3Wolf/onebuddy', requires = 'tjdevries/colorbuddy.vim'}
+    use({ 'norcalli/nvim-colorizer.lua' })
+    --
+    use({ 'lunarWatcher/auto-pairs' })
 
-	use({
-		"lewis6991/gitsigns.nvim",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		},
-	})
+    use({ 'folke/lsp-colors.nvim' })
 
-	--	use { 'norcalli/snippets.nvim' }
+    use({
+        'lewis6991/gitsigns.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+        },
+    })
 
-	use({ "mfussenegger/nvim-dap" })
+    use({ 'mfussenegger/nvim-dap' })
 
-	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
+    use({ 'rcarriga/nvim-dap-ui', requires = { 'mfussenegger/nvim-dap' } })
 
-	use({ "TimUntersberger/neogit", requires = { "nvim-lua/plenary.nvim" } })
+    use({
+        'theHamsta/nvim-dap-virtual-text',
+        requires = { 'mfussenegger/nvim-dap' },
+    })
 
-	use({ "sindrets/diffview.nvim" })
+    use({ 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim' } })
 
-	--	use {
-	--		'folke/trouble.nvim',
-	--		requires = { 'kyazdani42/nvim-web-devicons' },
-	--		config = function()
-	--			require('trouble').setup {
-	--				-- your configuration comes here
-	--				-- or leave it empty to use the default settings
-	--				-- refer to the configuration section below
-	--			}
-	--		end
-	--	}
+    use({ 'sindrets/diffview.nvim' })
 
-	use({ "kyazdani42/nvim-tree.lua", requires = { "kyazdani42/nvim-web-devicons" } })
+    use({
+        'folke/trouble.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        config = function()
+            require('trouble').setup({
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+            })
+        end,
+    })
 
-	use({ "hoob3rt/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
-	--
-	--	use { 'oknozor/illumination', run = './install.sh' }
+    use({
+        'kyazdani42/nvim-tree.lua',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+    })
 
-	use({ "andweeb/presence.nvim" })
+    use({
+        'hoob3rt/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+    })
+    --
+    --	use { 'oknozor/illumination', run = './install.sh' }
 
-	use({ "akinsho/nvim-toggleterm.lua" })
+    use({ 'akinsho/nvim-toggleterm.lua' })
 
-	use({ "hrsh7th/vim-vsnip" })
+    use({ 'hrsh7th/vim-vsnip' })
 
-	-- my very first colorscheme plugin
-	use({ "~/docs/projects/onechad" })
+    -- my very first colorscheme plugin
+    use({ '~/docs/projects/onechad' })
+
+    use({ 'ap/vim-css-color' })
 end)
